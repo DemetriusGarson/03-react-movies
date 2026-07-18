@@ -1,22 +1,23 @@
-import axios from "axios"
-import type { Movie } from "../types/movies"
+import axios from 'axios';
+import type { Movie } from '../types/movies';
 
 interface MoviesHttpResponse {
-    results: Movie[]
-
+    results: Movie[];
 }
 
 export const fetchMovies = async (movieName: string) => {
-    const response = await axios.get<MoviesHttpResponse>('https://api.themoviedb.org/3/search/movie', {
-        params: {
-            // твої параметри
-            query: movieName
-
-        },
-        headers: {
-            Authorization: `Bearer ${import.meta.env.VITE_API_KEY}`,
+    const response = await axios.get<MoviesHttpResponse>(
+        'https://api.themoviedb.org/3/search/movie',
+        {
+            params: {
+                query: movieName,
+            },
+            headers: {
+                Authorization: `Bearer ${import.meta.env.VITE_API_KEY}`,
+            },
         }
-    })
-    console.log(response.data.results);
-    // return response.data
-}
+    );
+    // console.log(response.data.results);
+
+    return response.data.results;
+};
