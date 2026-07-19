@@ -1,12 +1,12 @@
 import type { Movie } from '../../types/movie';
 import css from './MovieGrid.module.css';
 
-interface MovieGrid {
+interface MovieGridProps{
   movies: Movie[];
   onSelect: (selectedMovie: Movie) => void;
 }
 
-export default function MovieGrid({ movies, onSelect }: MovieGrid) {
+export default function MovieGrid({ movies, onSelect }: MovieGridProps) {
   return (
     <ul className={css.grid}>
       {/* Набір елементів списку з фільмами */}
