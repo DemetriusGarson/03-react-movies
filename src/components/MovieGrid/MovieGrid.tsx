@@ -3,15 +3,16 @@ import css from './MovieGrid.module.css';
 
 interface MovieGrid {
   movies: Movie[];
+  onSelect: (selectedMovie: Movie) => void;
 }
 
-export default function MovieGrid({ movies }: MovieGrid) {
+export default function MovieGrid({ movies, onSelect }: MovieGrid) {
   return (
     <ul className={css.grid}>
       {/* Набір елементів списку з фільмами */}
       {movies.map(movie => {
         return (
-          <li key={movie.id}>
+          <li key={movie.id} onClick={() => onSelect(movie)}>
             <div className={css.card}>
               <img
                 className={css.image}
