@@ -14,7 +14,6 @@ export default function App() {
   const [isLoading, setLoading] = useState(false);
   const [isError, setIsError] = useState(false);
   const [modalMovie, setModalMovie] = useState<Movie | null>(null);
-  const [isModal, setIsModal] = useState(false);
 
   const handleSearch = async (query: string) => {
     try {
@@ -37,11 +36,9 @@ export default function App() {
 
   const openModal = (selectedMovie: Movie) => {
     setModalMovie(selectedMovie);
-    setIsModal(true);
   };
 
   const closeModal = () => {
-    setIsModal(false);
     setModalMovie(null);
   };
 
@@ -58,7 +55,7 @@ export default function App() {
       ) : (
         <MovieGrid movies={movies} onSelect={openModal} />
       )}
-      {isModal && <MovieModal movie={modalMovie!} onClose={closeModal} />}
+      {modalMovie && <MovieModal movie={modalMovie!} onClose={closeModal} />}
     </>
   );
 }
